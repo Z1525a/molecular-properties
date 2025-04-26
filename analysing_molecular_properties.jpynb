@@ -1,0 +1,46 @@
+# Step 1: Import pandas
+import pandas as pd
+
+# Step 2: Load the uploaded CSV file
+data = pd.read_csv('molecular_properties.csv')
+
+# Step 3: Display the first few rows
+print(data.head())
+
+# Step 4:# Check the info of the dataset
+print(data.info())
+
+# Check for missing values
+print(data.isnull().sum())  
+
+# Step 5:
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(8,6))
+
+# Create the bar plot
+plt.bar(data['CID'], data['LogP'], color='green', alpha=0.6)
+
+# Overlay scatter plot to show individual points
+plt.scatter(data['CID'], data['LogP'], color='red', s=100, label='LogP Points')
+
+plt.title('LogP Values Across Compounds', fontsize=16)
+plt.xlabel('Compound CID', fontsize=14)
+plt.ylabel('LogP', fontsize=14)
+plt.grid(True, axis='y')
+
+# Show the legend
+plt.legend()
+
+plt.show()
+
+# Step 6:
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(8,6))
+plt.scatter(data['CID'], data['LogP'], color='red', s=100)  # Scatter plot instead of bar
+plt.title('LogP Values Across Compounds', fontsize=16)
+plt.xlabel('Compound CID', fontsize=14)
+plt.ylabel('LogP', fontsize=14)
+plt.grid(True, axis='both')
+plt.show()
